@@ -1,7 +1,6 @@
 const fs = require("fs");
 
 const binaryFind = require("./binaryFind");
-const beachHouseLyrics = require("./everyBeachHouselyric");
 
 function Letter(letter) {
   this.letter = letter;
@@ -10,7 +9,7 @@ function Letter(letter) {
 
 const dict = [];
 
-function load(giantString) {
+function load(giantString, dict=[]) {
 
   let current;
   let lastLetter;
@@ -48,6 +47,7 @@ function load(giantString) {
 
   }
   console.log("Success Load");
+  return dict
 }
 
 function printer(dictionary, save = "", lyrics = []) {
