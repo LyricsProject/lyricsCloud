@@ -1,4 +1,5 @@
 const fs = require("fs");
+const statistical = require('statistical-js')
 
 const binaryFind = require("./binaryFind");
 const beachHouseLyrics = require("./everyBeachHouselyric");
@@ -83,8 +84,39 @@ function giveMeLyrics(cb){
     });
 }
 
-giveMeLyrics(log)
-
 function log (lyric) {
     console.log(lyric.word + " FREQUENCY: " + lyric.frequency)
 }
+
+
+//giveMeLyrics(log)
+
+
+for(let file = 2; file<process.argv.length; file++){
+    let data = fs.readFileSync("./" + process.argv[file] + ".txt", "utf8")
+    load(data);
+}
+const lyrics = printer(dict);
+
+
+
+
+
+const numbersGame = lyrics.map(each=>each.frequency).sort((a,b)=>a-b)
+
+
+const percentile = statistical.methods.percentile(numbersGame, 85)
+const stdDev = statistical.methods.stdDeviation(numbersGame)
+
+const filtered = lyrics.filter(each=>each.frequency>percentile)
+
+filtered.sort((first, next) => {
+    if (next.frequency !== first.frequency)
+      return next.frequency - first.frequency;
+    else return next.word[0] - first.word[0];
+  });
+
+  filtered.forEach(each => {
+      log(each)
+  });
+

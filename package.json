@@ -1,0 +1,24 @@
+{
+  "name": "Lyrics_Dictionary",
+  "version": "1.0.0",
+  "description": "",
+  "main": "binaryFind.js",
+  "scripts": {
+    "start": "node Functions/runProgram.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LyricsProject/lyricsCloud.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LyricsProject/lyricsCloud/issues"
+  },
+  "homepage": "https://github.com/LyricsProject/lyricsCloud#readme",
+  "dependencies": {
+    "statistical-js": "^2.1.0"
+  }
+}
